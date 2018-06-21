@@ -2,7 +2,7 @@
 
 use tempfile::NamedTempFile;
 
-use std::io::{Error,Write,Read};
+use std::io::{Error,Write,Read,ErrorKind};
 use std::fs;
 use std::process::Command;
 
@@ -34,11 +34,17 @@ impl Editor{
 
         let mut tmp_file = NamedTempFile::new()?;
         tmp_file.write(txt.as_bytes())?;
+        tmp_file.flush()?;
         let timestamp = fs::metadata(tmp_file.path())?.modified()?;
 
         let mut editor_process = Command::new(self.editor.program());
         editor_process.arg(tmp_file.path());
-        let result = editor_process.spawn()?.wait()?;
+        let status = editor_process.spawn()?.wait()?;
+
+        if !status.success(){
+            let msg = format!("The Editor was not successfully closed. Bad return Code: {:#?}", status.code());
+            return Err(Error::new(ErrorKind::InvalidData, msg));
+        }
 
         let file_metadata = fs::metadata(tmp_file.path())?;
         let timestamp_after = file_metadata.modified()?;
