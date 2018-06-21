@@ -34,6 +34,7 @@ impl Editor{
 
         let mut tmp_file = NamedTempFile::new()?;
         tmp_file.write(txt.as_bytes())?;
+        tmp_file.flush()?;
         let timestamp = fs::metadata(tmp_file.path())?.modified()?;
 
         let mut editor_process = Command::new(self.editor.program());
