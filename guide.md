@@ -5,26 +5,26 @@ This file contains the description of command line instructions and the expected
 
 ## How to use
 
-All instructions require a working configuration to interact with kvasiruence. For configuration you can click here: [setup](127.0.0.1/example)
+All instructions require a working configuration to interact with confluence. For configuration you can click here: [setup](127.0.0.1/example)
 
 
 ##### Open Wiki-Page read only
 
-`` kvasir read "page" ``
+`` kvasir read "page-title" ``
 
 ##### Edit an wiki-page 
 
-`` kvasir edit "page" ``
+`` kvasir edit "page-title" ``
 
 ##### Adding new page from file
 
-`` kvasir add file "page" ``
+`` kvasir add file "page-title" ``
 
 ##### Adding new empty page
-`` kvasir add --empty "page" ``
+`` kvasir add --empty "page-title" ``
 
 ##### Deleting a wiki page
-`` kvasir delete "page" ``
+`` kvasir delete "page-title" ``
 
 ##### Creating default config
 
