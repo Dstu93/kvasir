@@ -5,3 +5,4 @@ authors = ["dstu <dstu93@noreply-github.com>"]
 
 [dependencies]
 tempfile = "3.0"
+clap = "2.31"

@@ -34,7 +34,7 @@ creating an example config with placeholders
 
 ##### Change path to configuration file
 
-`` kvasir config-path /path/to/config ``
+`` kvasir config --path /path/to/config ``
 
 ##### Searching in Wiki
 

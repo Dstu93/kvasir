@@ -1,8 +1,13 @@
 
 extern crate tempfile;
+extern crate clap;
 
 mod editor;
+mod app;
+
+use app::application::Application;
 
 fn main() {
-    println!("Hello, world!");
+    let app = Application::new();
+    let result  = app.run();
 }
