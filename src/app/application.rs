@@ -2,6 +2,9 @@
 use clap::{App,SubCommand,ArgMatches};
 use app::cmd::Command;
 
+/// constant for versioning commands and sub-commands
+const VERSION: &'static str = "Version 0.1";
+
 /// root struct of the application, it parses the arguments and handle them
 pub struct Application<'a,'b> where 'a: 'b,{
     inner: App<'a,'b>
@@ -20,7 +23,7 @@ impl <'a,'b>Application<'a, 'b>{
         let mut app = App::new("Kvasir")
             .about("Kvasir is an command line application for interacting with confluence")
             .author("D.Stu")
-            .version("Version 0.1")
+            .version(VERSION)
             .help("Kvasir Version 0.1\n\
                 Interacting with confluence from cli\n\
                 (C) no-mail@no-mail.com\n\n\
@@ -47,18 +50,20 @@ impl <'a,'b>Application<'a, 'b>{
         let config = Application::init_config();
         let search = Application::init_search();
 
-        app = app.subcommand(add)
+        app.subcommand(add)
             .subcommand(edit)
             .subcommand(read)
             .subcommand(delete)
             .subcommand(config)
-            .subcommand(search);
-
-        app
+            .subcommand(search)
     }
 
     fn init_add() -> App<'a,'b> {
         SubCommand::with_name("add")
+            .about("about")
+            .author("")
+            .version(VERSION)
+            .help("")
     }
 
     fn init_edit() -> App<'a,'b>{
