@@ -19,7 +19,7 @@ pub enum Command<'a: 'b,'b>{
 impl <'b,'a>Command<'b,'a>{
 
     /// matches the command from &str
-    pub fn match_from_str(&self, cmd: &str, args: Option<&'b ArgMatches<'a>>) -> Result<Command<'b,'a>,()> {
+    pub fn match_from_str(cmd: &str, args: Option<&'b ArgMatches<'a>>) -> Result<Command<'b,'a>,()> {
         match cmd{
             "add" => {Ok(Command::Add(args))},
             "edit" => {Ok(Command::Edit(args))},
